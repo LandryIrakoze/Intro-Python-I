@@ -21,4 +21,22 @@ and does the following:
 
 import sys
 import calendar
-from datetime import datetime
+from datetime import date
+
+
+today = str(date.today())
+default_year = today[0:4]
+default_month = today[5:7] if int(today[5:7]) > 9 else today[6:7]
+default_day = today[8:10] if int(today[8:10]) > 9 else today[9:10]
+
+
+if len(sys.argv) == 1:
+	print(calendar.monthcalendar(int(default_year), int(default_month)))
+elif len(sys.argv) == 2:
+	mo = sys.argv[1]
+	print(calendar.monthcalendar(int(default_year), int(mo)))
+elif len(sys.argv) == 3:
+	yr = sys.argv[2]
+	mo = sys.argv[1]
+	print(calendar.monthcalendar(int(yr), int(mo)))
+
